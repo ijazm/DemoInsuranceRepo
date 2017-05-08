@@ -1,2 +1,16 @@
 package com.demo.brms.demoinsuranceproject;
 
+rule "DwellingValueRule"
+
+when
+   HouseAge (hage <30)
+   Person(name : firstName, surname : lastName, Address: address, City: city, State: state, Zipcode: zipCode)
+   AdditionalItems(cars: numberOfCars, spool: pool, Eopool: screenedEnclosureOverPool)
+   HouseArea(sqft: squareFeet);
+   DwellValue(dvalue: dwellValue); 
+then
+   
+   System.out.println( "Hello" + " " + name + " " + surname + "!"  + "Your Address:" +  Address + City + State  + City + Zipcode );
+   dvalue = sqft*125+cars+spool+Eopool;
+   System.out.println( "Estimated dwelling value is $" +dvalue );
+end
